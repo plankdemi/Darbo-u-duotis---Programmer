@@ -8,6 +8,11 @@ use App\Models\Trucks;
 
 class TruckOperations extends Controller
 {
+
+    public function redirectToTrucks()
+    {
+        return redirect()->route('getTrucks');
+    }
     public function modifyTruck(Request $request)
     {
         $unitNumber = $request->input('unitNumber');
