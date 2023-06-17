@@ -73,16 +73,16 @@ class TruckOperations extends Controller
         ])->first();
 
         if ($model) {
-            // Record already exists
+            
             return redirect()->back()->withErrors(['Fail' => $subunit . ' is already subbing for ' . $main_truck])->withInput();
         }
 
-        // Create a new record
+       
         $model = new Truck_SubUnits();
         $model->main_truck = $main_truck;
         $model->subunit = $subunit;
 
-        // Fill and save the model using the request data
+        
         $model->fill($request->only('main_truck', 'subunit', 'start_date', 'end_date'));
         $model->save();
 

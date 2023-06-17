@@ -24,9 +24,6 @@ class Trucks extends Model
 
         static::saving(function ($model) {
 
-
-
-
             $validator = Validator::make($model->toArray(), [
 
                 'unitNumber' => [
@@ -35,22 +32,17 @@ class Trucks extends Model
                     'max:255',
 
                 ],
-
                 'year' => [
                     'required',
                     'integer',
                     'min:1900',
                     'max:' . (date('Y') + 5)
                 ],
-
                 'notes' => [
                     'string',
                     'nullable'
-
                 ]
-
             ]);
-
             if ($validator->fails()) {
                 throw new \InvalidArgumentException(implode("\n", $validator->errors()->all()));
             }
